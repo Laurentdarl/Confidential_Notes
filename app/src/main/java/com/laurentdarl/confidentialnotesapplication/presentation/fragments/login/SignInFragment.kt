@@ -35,32 +35,59 @@ class SignInFragment : Fragment() {
         }
 
         binding.tvSignUp.setOnClickListener {
-
+            signUp()
         }
 
         // Inflate the layout for this fragment
         return binding.root
     }
 
+    private fun signUp() {
+        val actions = SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+        findNavController().navigate(actions)
+    }
+
     private fun signIn() {
         val email = binding.tifEmail.text.toString()
         val password = binding.tifPassword.text.toString()
-
-        if (validateUser(email, password)) {
-            val actions = SignInFragmentDirections.actionSignInFragmentToNotesFragment()
-            findNavController().navigate(actions)
-            Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(requireContext(), "Please fill all fields correctly", LENGTH_SHORT).show()
-        }
+        validateUser(email, password)
     }
 
-    private fun validateUser(email: String, password: String): Boolean {
-
-        if (email.length < 5 && password.length < 5) {
-            Toast.makeText(requireContext(), "email too short", LENGTH_SHORT).show()
+    private fun validateUser(email: String, password: String) {
+        when {
+            TextUtils.isEmpty(email) -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Email field is empty",
+                    LENGTH_SHORT
+                ).show()
+            }
+            TextUtils.isEmpty(password) -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Password field is empty",
+                    LENGTH_SHORT
+                ).show()
+            }
+            email.length <= 6 -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Email should exceed 6 characters",
+                    LENGTH_SHORT
+                ).show()
+            }
+            password.length <= 6 -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Password should exceed 6 characters",
+                    LENGTH_SHORT
+                ).show()
+            }
+            else -> {
+                val actions = SignInFragmentDirections.actionSignInFragmentToNotesFragment()
+                findNavController().navigate(actions)
+                Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
+            }
         }
-        return !(TextUtils.isEmpty(email) && TextUtils.isEmpty(password))
     }
-
 }
