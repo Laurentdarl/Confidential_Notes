@@ -2,9 +2,12 @@ package com.laurentdarl.confidentialnotesapplication.data.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.laurentdarl.confidentialnotesapplication.data.models.Note
 import com.laurentdarl.confidentialnotesapplication.databinding.NoteItemBinding
+import com.laurentdarl.confidentialnotesapplication.presentation.fragments.home.NotesFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,7 +26,8 @@ class NotesAdapter(var clicker: (Note) -> Unit): RecyclerView.Adapter<NotesAdapt
 
                 root.setOnClickListener {
                     note.let {
-
+                        val actions = NotesFragmentDirections.actionNotesFragmentToUpdateNoteFragment(note)
+                        root.findNavController().navigate(actions)
                     }
                 }
             }

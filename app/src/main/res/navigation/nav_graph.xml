@@ -56,5 +56,8 @@
         <action
             android:id="@+id/action_updateNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
+        <argument
+            android:name="note"
+            app:argType="com.laurentdarl.confidentialnotesapplication.data.models.Note" />
     </fragment>
 </navigation>
