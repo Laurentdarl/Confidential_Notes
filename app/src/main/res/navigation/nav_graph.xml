@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateNoteFragment"
-        android:name="com.laurentdarl.confidentialnotesapplication.UpdateNoteFragment"
+        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.UpdateNoteFragment"
         android:label="fragment_update_note"
         tools:layout="@layout/fragment_update_note" >
         <action

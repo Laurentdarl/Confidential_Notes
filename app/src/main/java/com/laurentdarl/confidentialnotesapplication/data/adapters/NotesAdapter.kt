@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.laurentdarl.confidentialnotesapplication.data.models.Note
 import com.laurentdarl.confidentialnotesapplication.databinding.NoteItemBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class NotesAdapter(var clicker: (Note) -> Unit): RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
@@ -16,9 +17,9 @@ class NotesAdapter(var clicker: (Note) -> Unit): RecyclerView.Adapter<NotesAdapt
         private val formattedDate: String = java.text.DateFormat.getDateInstance().format(currentTime)
         fun bind(note: Note) {
             binding.apply {
-                tvTitle.text = binding.tvTitle.toString()
-                tvContent.text = binding.tvContent.toString()
-                tvTime.text = formattedDate
+                tvTitle.text = note.title
+                tvContent.text = note.content
+                tvTime.text = getFormattedDate(note.dateTime)
 
                 root.setOnClickListener {
                     note.let {
@@ -27,6 +28,15 @@ class NotesAdapter(var clicker: (Note) -> Unit): RecyclerView.Adapter<NotesAdapt
                 }
             }
         }
+    }
+
+    private fun getFormattedDate(dateTime: Date?): String {
+        var time = "Last updated: "
+        time += dateTime?.let {
+            val sdf = SimpleDateFormat("HH.mm d MMM, yyy", Locale.getDefault())
+            sdf.format(dateTime)
+        } ?: "Not Found"
+        return  time
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {

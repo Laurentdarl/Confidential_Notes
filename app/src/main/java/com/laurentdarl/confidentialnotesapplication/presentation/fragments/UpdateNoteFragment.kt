@@ -1,4 +1,4 @@
-package com.laurentdarl.confidentialnotesapplication
+package com.laurentdarl.confidentialnotesapplication.presentation.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
