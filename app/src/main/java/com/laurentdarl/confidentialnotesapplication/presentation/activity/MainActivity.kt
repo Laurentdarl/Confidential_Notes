@@ -2,6 +2,7 @@ package com.laurentdarl.confidentialnotesapplication.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -23,5 +24,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
         binding.bottomNav.setupWithNavController(navController)
+        binding.toolbar.setupWithNavController(navController)
     }
+
+    override fun onSupportNavigateUp() = Navigation.findNavController(
+        this, R.id.notes_container).navigateUp()
 }
