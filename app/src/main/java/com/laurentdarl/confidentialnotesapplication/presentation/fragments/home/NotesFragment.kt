@@ -46,6 +46,10 @@ class NotesFragment : Fragment() {
             findNavController().navigate(actions)
         }
 
+        noteViewModel.getAllNotes.observe(viewLifecycleOwner, {note ->
+            notesAdapter.setData(note)
+        })
+
         // Inflate the layout for this fragment
         return binding.root
     }

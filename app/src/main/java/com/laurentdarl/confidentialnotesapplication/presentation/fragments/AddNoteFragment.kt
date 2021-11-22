@@ -1,12 +1,15 @@
 package com.laurentdarl.confidentialnotesapplication.presentation.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.laurentdarl.confidentialnotesapplication.R
+import com.laurentdarl.confidentialnotesapplication.data.models.Note
 import com.laurentdarl.confidentialnotesapplication.data.viewmodels.NoteViewModel
 import com.laurentdarl.confidentialnotesapplication.databinding.FragmentAddNoteBinding
 import java.util.*
@@ -42,10 +45,18 @@ class AddNoteFragment : Fragment() {
         val currentTime: Date = Calendar.getInstance().time
         val title = binding.tifNoteTitle.text.toString()
         val content = binding.tifNoteContent.text.toString()
-        validateInput(title, content, )
+        validateInput(title, content, currentTime)
     }
 
-    private fun validateInput(title: String, Content: String) {
-
+    private fun validateInput(title: String, content: String, currentTime: Date?) {
+        val note = Note(title, content, currentTime)
+        when {
+            TextUtils.isEmpty(title) -> Toast.makeText(requireContext(), "Please include a title", Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(content) -> Toast.makeText(requireContext(), "Please include a content", Toast.LENGTH_SHORT).show()
+            else -> {
+                noteViewModel.addNote(note)
+                Toast.makeText(requireContext(), "Note added successfully!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
