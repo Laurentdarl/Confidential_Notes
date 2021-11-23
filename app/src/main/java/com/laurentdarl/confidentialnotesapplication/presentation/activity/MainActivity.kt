@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideStatusBar() {
         binding.toolbar.visibility = View.GONE
+        supportActionBar?.hide()
     }
 
     override fun onSupportNavigateUp() = Navigation.findNavController(
