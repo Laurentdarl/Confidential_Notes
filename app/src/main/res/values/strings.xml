@@ -13,4 +13,6 @@
     <string name="or">OR</string>
     <string name="names">Names</string>
     <string name="repeat_password">Repeat password</string>
+    <string name="time">20:00pm</string>
+    <string name="title"><u>Title</u></string>
 </resources>

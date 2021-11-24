@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:padding="8dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="2dp"
+    android:paddingTop="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#E8E8BC"
+            app:cardElevation="2dp"
             app:cardCornerRadius="8dp" >
 
             <LinearLayout
@@ -23,9 +32,10 @@
                     android:id="@+id/tv_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Title"
+                    android:text="@string/title"
+                    android:textAllCaps="true"
                     android:textStyle="bold"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textAlignment="center" />
 
@@ -34,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -43,9 +53,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="20:00pm"
+                    android:text="@string/time"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -53,4 +63,4 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+</FrameLayout>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.laurentdarl.confidentialnotesapplication.R
 import com.laurentdarl.confidentialnotesapplication.data.models.Note
 import com.laurentdarl.confidentialnotesapplication.data.viewmodels.NoteViewModel
@@ -56,6 +57,8 @@ class AddNoteFragment : Fragment() {
             else -> {
                 noteViewModel.addNote(note)
                 Toast.makeText(requireContext(), "Note added successfully!", Toast.LENGTH_SHORT).show()
+                val actions = AddNoteFragmentDirections.actionAddNoteFragmentToNotesFragment()
+                findNavController().navigate(actions)
             }
         }
     }

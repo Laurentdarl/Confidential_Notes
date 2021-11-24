@@ -16,7 +16,13 @@ import android.provider.MediaStore
 
 import android.content.DialogInterface
 import android.os.Environment
+import android.text.TextUtils
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.laurentdarl.confidentialnotesapplication.data.models.Note
+import com.laurentdarl.confidentialnotesapplication.presentation.fragments.AddNoteFragmentDirections
 import com.laurentdarl.confidentialnotesapplication.utils.URIPathHelper
+import java.util.*
 
 
 class SignUpFragment : Fragment() {
@@ -40,8 +46,20 @@ class SignUpFragment : Fragment() {
             openGalleryForImage()
         }
 
+        binding.btnSignUp.setOnClickListener {
+            signUp()
+        }
+
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    private fun signUp() {
+        val names = binding.tifNames.text.toString()
+        val email = binding.tifEmail.text.toString()
+        val password = binding.tifPassword.text.toString()
+        val repeatPassword = binding.tifRepeatPassword.text.toString()
+        validateInput(names, email, password, repeatPassword)
     }
 
     private fun openGalleryForImage() {
@@ -56,6 +74,23 @@ class SignUpFragment : Fragment() {
             binding.imgUpload.setImageURI(data?.data) // handle chosen image
         } else if (data == null || data.data == null ) {
             return
+        }
+    }
+
+    private fun validateInput(names: String, email: String, password: String, repeatPassword: String) {
+
+        when {
+            TextUtils.isEmpty(names) -> Toast.makeText(requireContext(), "Please fill in your full names", Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(email) -> Toast.makeText(requireContext(), "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(password) -> Toast.makeText(requireContext(), "Please enter a password", Toast.LENGTH_SHORT).show()
+            TextUtils.isEmpty(repeatPassword) -> Toast.makeText(requireContext(), "Please confirm your password", Toast.LENGTH_SHORT).show()
+            repeatPassword != password  -> Toast.makeText(requireContext(), "Passwords do not match, please check password", Toast.LENGTH_SHORT).show()
+            else -> {
+
+                Toast.makeText(requireContext(), "Note added successfully!", Toast.LENGTH_SHORT).show()
+                val actions = SignUpFragmentDirections.actionSignUpFragmentToNotesFragment()
+                findNavController().navigate(actions)
+            }
         }
     }
 

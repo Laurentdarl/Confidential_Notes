@@ -58,12 +58,13 @@ class UpdateNoteFragment : Fragment() {
         val currentTime: Date = Calendar.getInstance().time
         val title = binding.tifUpdateNoteTitle.text.toString()
         val content = binding.tifUpdateNoteContent.text.toString()
-        validateInput(title, content, currentTime)
+        val id = args.note.id
+        validateInput(title, content, currentTime, id)
         actions()
     }
 
-    private fun validateInput(title: String, content: String, currentTime: Date?) {
-        val note = Note(title, content, currentTime, id = args.note.id)
+    private fun validateInput(title: String, content: String, currentTime: Date?, id: Int) {
+        val note = Note(title, content, currentTime, id)
         when {
             TextUtils.isEmpty(title) -> Toast.makeText(requireContext(), "Please include a title", Toast.LENGTH_SHORT).show()
             TextUtils.isEmpty(content) -> Toast.makeText(requireContext(), "Please include a content", Toast.LENGTH_SHORT).show()

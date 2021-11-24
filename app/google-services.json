@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "740347278754",
+    "project_id": "confidential-drafts",
+    "storage_bucket": "confidential-drafts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740347278754:android:6579ae5e7df09631c7eefb",
+        "android_client_info": {
+          "package_name": "com.laurentdarl.confidentialnotesapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740347278754-mavjn037sqpa7hbt5dhreop2ngak6p8u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.laurentdarl.confidentialnotesapplication",
+            "certificate_hash": "10ea1a8ac372a34fa14186c4d34fb953b6a02973"
+          }
+        },
+        {
+          "client_id": "740347278754-gpbbnvla4t2t3kq4kl5au0l9qgdorgoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARpIi1SXyYcSm-qGpLxhhGZLbgRWRN8sU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740347278754-gpbbnvla4t2t3kq4kl5au0l9qgdorgoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
