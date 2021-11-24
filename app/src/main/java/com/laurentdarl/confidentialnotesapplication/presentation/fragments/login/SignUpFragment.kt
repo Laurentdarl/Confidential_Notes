@@ -169,6 +169,7 @@ class SignUpFragment : Fragment() {
                                 "Registration successful!",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            sendVerificationEmail()
                             auth.signOut()
                             loginActions()
                         } else {
@@ -198,6 +199,26 @@ class SignUpFragment : Fragment() {
     private fun domainRestriction(email: String): Boolean {
         val domain = email.substring(email.indexOf("@") + 1).toLowerCase()
         return domain == DOMAIN_NAME
+    }
+
+    private fun sendVerificationEmail() {
+        val firebaseUser: FirebaseUser = auth.currentUser!!
+        firebaseUser.sendEmailVerification()
+            .addOnCompleteListener {task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Email verification has been sent to the email address provided",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Could not verify the email address provided",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
     }
 
     companion object {

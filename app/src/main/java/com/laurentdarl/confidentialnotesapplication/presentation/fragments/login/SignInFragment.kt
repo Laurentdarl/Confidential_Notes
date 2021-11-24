@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.laurentdarl.confidentialnotesapplication.R
 import com.laurentdarl.confidentialnotesapplication.databinding.FragmentSignInBinding
 
-
 class SignInFragment : Fragment() {
 
     private var _binding: FragmentSignInBinding? = null
@@ -127,9 +126,14 @@ class SignInFragment : Fragment() {
                         progressDialog.show()
                         if (task.isSuccessful) {
                             progressDialog.dismiss()
-                            val firebaseUser: FirebaseUser = task.result!!.user!!
-                            Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
-                            actions()
+                            if (auth.currentUser!!.isEmailVerified) {
+                                Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
+                                actions()
+                            } else {
+                                Toast.makeText(requireContext(), "Please check your Email inbox for a verification link",
+                                    Toast.LENGTH_SHORT).show()
+                                auth.signOut()
+                            }
                         } else {
                             progressDialog.dismiss()
                             Toast.makeText(requireContext(), task.exception!!.message.toString(),
@@ -148,6 +152,10 @@ class SignInFragment : Fragment() {
     private fun domainRestriction(email: String): Boolean {
         val domain = email.substring(email.indexOf("@") + 1).toLowerCase()
         return domain == DOMAIN_NAME
+    }
+
+    private fun resendVerification() {
+
     }
 
     companion object {
