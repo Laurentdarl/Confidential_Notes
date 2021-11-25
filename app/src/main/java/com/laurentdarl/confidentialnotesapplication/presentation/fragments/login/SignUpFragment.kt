@@ -18,6 +18,7 @@ import android.provider.MediaStore
 import android.content.DialogInterface
 import android.os.Environment
 import android.text.TextUtils
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -55,6 +56,10 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSignUpBinding.inflate(layoutInflater)
+
+        val genderArray = resources.getStringArray(R.array.gender)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_btn, genderArray)
+        binding.tiGender.setAdapter(arrayAdapter)
 
         binding.tvUploadImg.setOnClickListener {
             openGalleryForImage()

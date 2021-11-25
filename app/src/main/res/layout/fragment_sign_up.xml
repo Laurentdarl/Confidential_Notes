@@ -68,24 +68,49 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tf_phone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone_number"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="@id/tf_email"
+        app:layout_constraintStart_toStartOf="@id/tf_email"
+        app:layout_constraintTop_toBottomOf="@id/tf_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tif_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_phone_number"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/purple_700"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tf_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/password"
         app:endIconMode="clear_text"
-        app:layout_constraintEnd_toEndOf="@+id/tf_email"
-        app:layout_constraintStart_toStartOf="@+id/tf_email"
-        app:layout_constraintTop_toBottomOf="@id/tf_email">
+        app:counterEnabled="true"
+        app:counterMaxLength="15"
+        app:layout_constraintEnd_toEndOf="@+id/tf_phone"
+        app:layout_constraintStart_toStartOf="@+id/tf_phone"
+        app:layout_constraintTop_toBottomOf="@id/tf_phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tif_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
             android:drawableStart="@drawable/ic_password"
             android:drawablePadding="5dp"
             android:drawableTint="@color/purple_700"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +120,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/repeat_password"
+        app:passwordToggleEnabled="true"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="@+id/tf_password"
         app:layout_constraintStart_toStartOf="@+id/tf_password"
@@ -105,23 +131,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableTint="@color/purple_700"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/tv_anonymous"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tf_gender"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/negative_background"
-        android:padding="8dp"
-        android:text="@string/sign_in_anonymously"
-        android:textColor="#EA0303"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:hint="@string/gender"
+        app:helperText="required"
+        app:helperTextTextColor="#F33535"
+        app:layout_constraintEnd_toEndOf="@+id/tf_repeat_password"
+        app:layout_constraintStart_toStartOf="@+id/tf_repeat_password"
+        app:layout_constraintTop_toBottomOf="@id/tf_repeat_password" >
+
+        <AutoCompleteTextView
+            android:id="@+id/ti_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -129,10 +162,10 @@
         android:layout_height="60dp"
         android:background="@drawable/negative_background"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/tf_repeat_password"
+        app:layout_constraintEnd_toEndOf="@+id/tf_gender"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/tf_repeat_password"
-        app:layout_constraintTop_toBottomOf="@+id/tf_repeat_password">
+        app:layout_constraintStart_toStartOf="@+id/tf_gender"
+        app:layout_constraintTop_toBottomOf="@+id/tf_gender">
 
         <ImageView
             android:id="@+id/img_upload"
@@ -170,6 +203,19 @@
         app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+
+    <TextView
+        android:id="@+id/tv_anonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/negative_background"
+        android:padding="8dp"
+        android:text="@string/sign_in_anonymously"
+        android:textColor="#EA0303"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 <!--    textCapSentences-->

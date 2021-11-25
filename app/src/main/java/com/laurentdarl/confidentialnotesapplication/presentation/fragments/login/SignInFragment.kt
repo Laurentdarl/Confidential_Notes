@@ -131,6 +131,7 @@ class SignInFragment : Fragment() {
                                 Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
                                 actions()
                             } else {
+                                binding.tfEmail.error = "Email not verified"
                                 Toast.makeText(requireContext(), "Please check your Email inbox for a verification link",
                                     Toast.LENGTH_SHORT).show()
                                 auth.signOut()
