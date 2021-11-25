@@ -1,4 +1,4 @@
-package com.laurentdarl.confidentialnotesapplication.data
+package com.laurentdarl.confidentialnotesapplication.data.typeconverters
 
 import androidx.room.TypeConverter
 import java.util.*

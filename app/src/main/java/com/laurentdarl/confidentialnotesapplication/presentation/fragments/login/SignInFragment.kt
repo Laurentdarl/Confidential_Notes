@@ -22,12 +22,13 @@ class SignInFragment : Fragment() {
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
     private val auth = FirebaseAuth.getInstance()
+    private var user = auth.currentUser
     private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (auth.currentUser != null && !auth.currentUser!!.isAnonymous) {
+        if (user != null && !user!!.isAnonymous) {
            actions()
         }
         progressDialog = ProgressDialog(requireContext())
@@ -126,7 +127,7 @@ class SignInFragment : Fragment() {
                         progressDialog.show()
                         if (task.isSuccessful) {
                             progressDialog.dismiss()
-                            if (auth.currentUser!!.isEmailVerified) {
+                            if (user!!.isEmailVerified) {
                                 Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
                                 actions()
                             } else {
@@ -157,6 +158,17 @@ class SignInFragment : Fragment() {
     private fun resendVerification() {
 
     }
+
+    private fun userDetails() {
+        if (user != null) {
+            val uid = user!!.uid
+            val name = user!!.displayName
+            val email = user!!.email
+            val photoUrl = user!!.photoUrl
+
+        }
+    }
+
 
     companion object {
         const val DOMAIN_NAME = "gmail.com"

@@ -19,10 +19,11 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
         val dao = NoteDatabase.getNoteDatabase(application).noteDAO()
         repository = NoteRepository(dao)
         getAllNotes = repository.getAllNotes()
+
     }
 
-    fun getSelectNote(noteSearch: String): Job = viewModelScope.launch(Dispatchers.IO) {
-        repository.getSelectNote(noteSearch)
+    fun getSelectNote(noteSearch: String): LiveData<List<Note>> {
+        return repository.getSelectNote(noteSearch)
     }
 
     fun addNote(note: Note) = viewModelScope.launch(Dispatchers.IO)

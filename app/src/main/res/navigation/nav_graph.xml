@@ -36,8 +36,8 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.home.NotesFragment"
-        android:label="Notes"
-        tools:layout="@layout/fragment_notes" >
+        android:label="Your Notes"
+        tools:layout="@layout/fragment_notes">
         <action
             android:id="@+id/action_notesFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
@@ -48,8 +48,8 @@
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.AddNoteFragment"
-        android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" >
+        android:label="Add New Note"
+        tools:layout="@layout/fragment_add_note">
         <action
             android:id="@+id/action_addNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
@@ -57,8 +57,8 @@
     <fragment
         android:id="@+id/updateNoteFragment"
         android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.UpdateNoteFragment"
-        android:label="fragment_update_note"
-        tools:layout="@layout/fragment_update_note" >
+        android:label="Update Note"
+        tools:layout="@layout/fragment_update_note">
         <action
             android:id="@+id/action_updateNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
@@ -66,4 +66,14 @@
             android:name="note"
             app:argType="com.laurentdarl.confidentialnotesapplication.data.models.Note" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/favoriteFragment2"
+        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.FavoriteFragment"
+        android:label="Favorite Notes"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

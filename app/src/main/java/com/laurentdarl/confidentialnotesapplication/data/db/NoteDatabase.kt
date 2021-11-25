@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.impl.WorkDatabaseMigrations.MIGRATION_1_2
-import com.laurentdarl.confidentialnotesapplication.data.DateTypeConverter
+import com.laurentdarl.confidentialnotesapplication.data.typeconverters.DateTypeConverter
 import com.laurentdarl.confidentialnotesapplication.data.models.Note
 
 @Database(entities = [Note::class], version = 1, exportSchema = false)

@@ -15,4 +15,8 @@
     <string name="repeat_password">Repeat password</string>
     <string name="time">20:00pm</string>
     <string name="title"><u>Title</u></string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <string name="favorite">Favorite</string>
+    <string name="note_">Notes</string>
 </resources>
