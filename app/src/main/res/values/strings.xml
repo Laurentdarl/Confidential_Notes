@@ -19,4 +19,7 @@
     <string name="profile">Profile</string>
     <string name="favorite">Favorite</string>
     <string name="note_">Notes</string>
+    <string name="user_profile">User Profile</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
 </resources>
