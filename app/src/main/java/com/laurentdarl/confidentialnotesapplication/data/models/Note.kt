@@ -9,7 +9,7 @@ import java.util.*
 data class Note(
     val title: String,
     val content: String,
-    val dateTime: Date?,
+    val date_time: Date?,
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
 ): Serializable

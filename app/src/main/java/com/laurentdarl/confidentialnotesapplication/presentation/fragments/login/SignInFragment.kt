@@ -3,6 +3,7 @@ package com.laurentdarl.confidentialnotesapplication.presentation.fragments.logi
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.laurentdarl.confidentialnotesapplication.R
 import com.laurentdarl.confidentialnotesapplication.databinding.FragmentSignInBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SignInFragment : Fragment() {
 
@@ -52,6 +57,9 @@ class SignInFragment : Fragment() {
             signUp()
         }
 
+        binding.tvForgotPassword.setOnClickListener {
+            resetPassword()
+        }
 
         binding.tvAnonymous.setOnClickListener {
             anonymous()
@@ -126,14 +134,18 @@ class SignInFragment : Fragment() {
                     .addOnCompleteListener{task ->
                         progressDialog.show()
                         if (task.isSuccessful) {
+                            user?.reload()
+                            user = FirebaseAuth.getInstance().currentUser
                             progressDialog.dismiss()
-                            if (user!!.isEmailVerified) {
-                                Snackbar.make(binding.root, "Logged in successfully!", Snackbar.LENGTH_SHORT).show()
+                            if (user?.isEmailVerified == true) {
+                                Snackbar.make(binding.root, "Welcome ${user?.displayName}", Snackbar.LENGTH_SHORT).show()
                                 actions()
+                                Log.i("LOGIN", "${user?.email}")
+                                Log.i("LOGIN", "${user?.isEmailVerified}")
+                                Log.i("LOGIN", "$user")
                             } else {
+                                Snackbar.make(binding.root, "An email verification was sent to your inbox!", Snackbar.LENGTH_SHORT).show()
                                 binding.tfEmail.error = "Email not verified"
-                                Toast.makeText(requireContext(), "Please check your Email inbox for a verification link",
-                                    Toast.LENGTH_SHORT).show()
                                 auth.signOut()
                             }
                         } else {
@@ -151,25 +163,37 @@ class SignInFragment : Fragment() {
         findNavController().navigate(actions)
     }
 
+//    private fun passwordResetAction() {
+//        val email = binding.tifEmail.text.toString()
+//        val actions = SignInFragmentDirections.actionSignInFragmentToResetPasswordFragment(email)
+//        findNavController().navigate(actions)
+//    }
+
     private fun domainRestriction(email: String): Boolean {
         val domain = email.substring(email.indexOf("@") + 1).toLowerCase()
         return domain == DOMAIN_NAME
     }
 
-    private fun resendVerification() {
+    private fun resetPassword() {
+
+        auth.sendPasswordResetEmail(auth.currentUser?.email.toString())
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(
+                        requireContext(),
+                        "A password reset link has been sent to your email address",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Password reset failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
 
     }
-
-    private fun userDetails() {
-        if (user != null) {
-            val uid = user!!.uid
-            val name = user!!.displayName
-            val email = user!!.email
-            val photoUrl = user!!.photoUrl
-
-        }
-    }
-
 
     companion object {
         const val DOMAIN_NAME = "gmail.com"

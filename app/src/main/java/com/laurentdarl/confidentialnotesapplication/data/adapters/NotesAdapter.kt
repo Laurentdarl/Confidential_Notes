@@ -3,7 +3,6 @@ package com.laurentdarl.confidentialnotesapplication.data.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.laurentdarl.confidentialnotesapplication.data.models.Note
 import com.laurentdarl.confidentialnotesapplication.databinding.NoteItemBinding
@@ -22,7 +21,7 @@ class NotesAdapter(var clicker: (Note) -> Unit): RecyclerView.Adapter<NotesAdapt
             binding.apply {
                 tvTitle.text = note.title
                 tvContent.text = note.content
-                tvTime.text = getFormattedDate(note.dateTime)
+                tvTime.text = getFormattedDate(note.date_time)
 
                 root.setOnClickListener {
                     note.let {

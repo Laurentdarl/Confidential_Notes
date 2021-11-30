@@ -45,7 +45,7 @@ class AddNoteFragment : Fragment() {
     private fun addNote() {
         val currentTime: Date = Calendar.getInstance().time
         val title = binding.tifNoteTitle.text.toString()
-        val content = binding.tifNoteContent.text.toString()
+        val content = binding.tifNoteContent.text.toString().trim {it <= ' '}
         validateInput(title, content, currentTime)
     }
 

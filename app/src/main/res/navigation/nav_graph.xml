@@ -20,6 +20,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_signInFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -44,6 +47,9 @@
         <action
             android:id="@+id/action_notesFragment_to_updateNoteFragment"
             app:destination="@id/updateNoteFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -76,4 +82,16 @@
         android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.FavoriteFragment"
         android:label="Favorite Notes"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.login.ResetPasswordFragment"
+        android:label="Reset Password"
+        tools:layout="@layout/fragment_reset_password">
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
 </navigation>

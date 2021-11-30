@@ -8,11 +8,6 @@
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
-    <item app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_user_profile"
-        android:title="@string/user_profile"
-        android:id="@+id/profileFragment" />
-
     <item android:id="@+id/logout"
         android:title="@string/logout"
         app:showAsAction="never"
@@ -22,4 +17,10 @@
         android:id="@+id/settings"
         android:title="@string/settings"
         app:showAsAction="never" />
+
+    <item app:showAsAction="never"
+        android:icon="@drawable/ic_baseline_delete_forever_24"
+        android:title="@string/delete_user"
+        android:id="@+id/profile_delete" />
+
 </menu>
