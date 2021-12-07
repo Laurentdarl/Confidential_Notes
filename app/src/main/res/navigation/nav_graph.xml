@@ -74,9 +74,13 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.ProfileFragment"
+        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileUpdateFragment"
+            app:destination="@id/profileUpdateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment2"
         android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.FavoriteFragment"
@@ -93,5 +97,14 @@
         <argument
             android:name="email"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileUpdateFragment"
+        android:name="com.laurentdarl.confidentialnotesapplication.presentation.fragments.profile.ProfileUpdateFragment"
+        android:label="Update Profile"
+        tools:layout="@layout/fragment_profile_update">
+        <action
+            android:id="@+id/action_profileUpdateFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

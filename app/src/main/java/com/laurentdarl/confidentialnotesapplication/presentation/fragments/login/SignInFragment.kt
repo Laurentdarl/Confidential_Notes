@@ -130,9 +130,9 @@ class SignInFragment : Fragment() {
                 ).show()
             }
             else -> {
+                progressDialog.show()
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener{task ->
-                        progressDialog.show()
                         if (task.isSuccessful) {
                             user?.reload()
                             user = FirebaseAuth.getInstance().currentUser

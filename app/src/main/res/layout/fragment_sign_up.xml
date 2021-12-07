@@ -26,7 +26,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
         android:hint="@string/names"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,6 @@
             android:id="@+id/tif_names"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:drawableStart="@drawable/ic_person"
             android:drawablePadding="5dp"
             android:drawableTint="@color/purple_700"
@@ -135,73 +134,15 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_gender"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/gender"
-        app:helperText="required"
-        app:helperTextTextColor="#F33535"
-        app:layout_constraintEnd_toEndOf="@+id/tf_repeat_password"
-        app:layout_constraintStart_toStartOf="@+id/tf_repeat_password"
-        app:layout_constraintTop_toBottomOf="@id/tf_repeat_password" >
-
-        <AutoCompleteTextView
-            android:id="@+id/ti_gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:background="@drawable/negative_background"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/tf_gender"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/tf_gender"
-        app:layout_constraintTop_toBottomOf="@+id/tf_gender">
-
-        <ImageView
-            android:id="@+id/img_upload"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:paddingLeft="5dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/tv_upload_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select image"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_upload"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Sign up"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/tf_repeat_password"
+        app:layout_constraintStart_toStartOf="@+id/tf_repeat_password"
+        app:layout_constraintTop_toBottomOf="@+id/tf_repeat_password" />
 
 
     <TextView
@@ -229,4 +170,3 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    textCapSentences-->
